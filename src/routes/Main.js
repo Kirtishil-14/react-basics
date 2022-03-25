@@ -6,6 +6,9 @@ const Main = () => {
   return (
     <>
       <button onClick={() => navigate('Hooks')}>Hooks</button>
+      <button onClick={() => navigate('Todo')}>Todo</button>
+      <button onClick={() => navigate('Menu')}>Menu</button>
+      <button onClick={() => navigate('Form')}>Form</button>
     </>
   )
 }

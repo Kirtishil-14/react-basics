@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { GlobalInfo } from './routes/Hooks'
+import { GlobalInfo } from './Hooks'
 
 const Child = (props) => {
   console.log(props)
