@@ -1,46 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 const getLocalData = () => {
-  const lists = localStorage.getItem('todo');
+  const lists = localStorage.getItem("todo");
   if (lists) {
     return JSON.parse(lists);
   } else {
     return [];
   }
-}
+};
 
 const Todo = () => {
-
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [items, setItems] = useState(getLocalData());
-  const [isEditItem, setIsEditItem] = useState('');
+  const [isEditItem, setIsEditItem] = useState("");
   const [toggleBtn, setToggleBtn] = useState(false);
 
   const addItem = () => {
     if (!input) {
-      console.error('enter data');
+      console.error("enter data");
       return;
     } else if (input && toggleBtn) {
       setItems(
         items.map((elem) => {
           if (elem.id === isEditItem) {
-            return { ...elem, name: input }
+            return { ...elem, name: input };
           }
           return elem;
         })
-      )
-      setInput([]);
+      );
+      setInput("");
       setIsEditItem(null);
       setToggleBtn(false);
     } else {
       const newItems = {
         id: new Date().getTime().toString(),
-        name: input
-      }
+        name: input,
+      };
       setItems([...items, newItems]);
-      setInput('');
+      setInput("");
     }
-  }
+  };
 
   const editItem = (id) => {
     const edited_item = items.find((elem) => {
@@ -49,7 +48,7 @@ const Todo = () => {
     setInput(edited_item.name);
     setIsEditItem(id);
     setToggleBtn(true);
-  }
+  };
 
   const deleteItem = (id) => {
     const updateItem = items.filter((elem) => {
@@ -57,11 +56,11 @@ const Todo = () => {
     });
 
     setItems(updateItem);
-  }
+  };
 
   const removeAll = () => {
     setItems([]);
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(items));
@@ -73,34 +72,63 @@ const Todo = () => {
         <h1>Todo</h1>
       </div>
       <div>
-        <input type="text" value={input} onChange={(event) => setInput(event.target.value)} />
-        {
-          toggleBtn ? (
-            <button type="button" className="btn btn-primary m-1 btn-sm" onClick={addItem}>Edit</button>
-          ) : (
-            <button type="button" className="btn btn-primary m-1 btn-sm" onClick={addItem}>Add</button>
-          )
-        }
-
+        <input
+          type="text"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        />
+        {toggleBtn ? (
+          <button
+            type="button"
+            className="btn btn-primary m-1 btn-sm"
+            onClick={addItem}
+          >
+            Edit
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-primary m-1 btn-sm"
+            onClick={addItem}
+          >
+            Add
+          </button>
+        )}
       </div>
       <div>
-        {
-          items.map((item) => {
-            return (
-              <div key={item.id}>
-                <span >{item.name}</span>
-                <button type="button" className="btn btn-primary m-1 btn-sm" onClick={() => editItem(item.id)}>edit</button>
-                <button type="button" className="btn btn-primary m-1 btn-sm" onClick={() => deleteItem(item.id)}>delete</button>
-              </div>
-            )
-          })
-        }
+        {items.map((item) => {
+          return (
+            <div key={item.id}>
+              <span>{item.name}</span>
+              <button
+                type="button"
+                className="btn btn-primary m-1 btn-sm"
+                onClick={() => editItem(item.id)}
+              >
+                edit
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary m-1 btn-sm"
+                onClick={() => deleteItem(item.id)}
+              >
+                delete
+              </button>
+            </div>
+          );
+        })}
       </div>
       <div>
-        <button type="button" className="btn btn-danger m-1 btn-sm" onClick={removeAll}>Check All</button>
+        <button
+          type="button"
+          className="btn btn-danger m-1 btn-sm"
+          onClick={removeAll}
+        >
+          Check All
+        </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;
