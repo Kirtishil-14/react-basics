@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Main from "../routes/Main";
 
 const Form = () => {
   const [data, setData] = useState({
@@ -43,6 +44,7 @@ const Form = () => {
 
   return (
     <>
+      <Main />
       <div className="container">
         <h1>Registration Form</h1>
         <hr />

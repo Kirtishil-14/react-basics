@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Main from "../routes/Main";
 
 const getLocalData = () => {
   const lists = localStorage.getItem("todo");
@@ -68,6 +69,7 @@ const Todo = () => {
 
   return (
     <>
+      <Main />
       <div>
         <h1>Todo</h1>
       </div>

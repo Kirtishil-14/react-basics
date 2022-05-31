@@ -5,6 +5,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
+import Main from "./Main";
 
 const UserContext = createContext();
 
@@ -28,6 +29,7 @@ const Hooks = () => {
 
   return (
     <>
+      <Main />
       <p>{state}</p>
       <button
         type="button"

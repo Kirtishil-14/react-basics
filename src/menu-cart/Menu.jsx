@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Main from "../routes/Main";
 import MenuApi from "./MenuApi";
 
 const uniqueList = [
@@ -28,6 +29,7 @@ const Menu = () => {
 
   return (
     <>
+      <Main />
       <nav className="navbar">
         <div>
           {menuList.map((elem, i) => {

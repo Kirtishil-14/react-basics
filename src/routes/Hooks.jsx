@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useReducer, createContext } from 'react';
-import Child from './Child';
+import React, { useState, useEffect, useReducer, createContext } from "react";
+import Child from "./Child";
+import Main from "./Main";
 
 export const GlobalInfo = createContext();
 
 const reducer = (state, action) => {
-  if (action.type === 'add') {
+  if (action.type === "add") {
     return state + 1;
-  } else if (action.type === 'sub') {
+  } else if (action.type === "sub") {
     return state - 1;
   }
   return state;
-}
+};
 
 const Hooks = () => {
   const [count, setCount] = useState(0);
-  const [data, setData] = useState('Kirtishil');
+  const [data, setData] = useState("Kirtishil");
 
   useEffect(() => {
     console.log(`count is : ${count}`);
@@ -28,6 +29,7 @@ const Hooks = () => {
 
   return (
     <>
+      <Main />
       <div>
         {count}
         <button onClick={() => setCount(count + 1)}>add</button>
@@ -35,14 +37,14 @@ const Hooks = () => {
       </div>
       <div>
         {state}
-        <button onClick={() => dispatch({ type: 'add' })}> add</button>
-        <button onClick={() => dispatch({ type: 'sub' })}> sub</button>
+        <button onClick={() => dispatch({ type: "add" })}> add</button>
+        <button onClick={() => dispatch({ type: "sub" })}> sub</button>
       </div>
       <GlobalInfo.Provider value={{ parentData: data }}>
         <Child alert={parentAlert} />
       </GlobalInfo.Provider>
     </>
-  )
-}
+  );
+};
 
-export default Hooks
+export default Hooks;
