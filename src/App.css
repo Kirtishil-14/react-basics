@@ -1,3 +1,11 @@
-div {
-  margin: 20px;
+.App {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: -webkit-fill-available;
 }
