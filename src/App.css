@@ -9,3 +9,7 @@
 input {
   width: -webkit-fill-available;
 }
+
+#genderSelect {
+  padding: 25%
+}

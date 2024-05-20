@@ -402,7 +402,8 @@ const Sample = () => {
                   >
                     {selectedItem?.id === item.id ? (
                       <>
-                        <input
+                        <TextField
+                          id="outlined-multiline-flexible"
                           value={selectedItem?.first + " " + selectedItem?.last}
                           onChange={(e) => {
                             setSelectedItem({
@@ -447,7 +448,6 @@ const Sample = () => {
                         {selectedItem?.id === item.id ? (
                           <TextField
                             id="outlined-multiline-flexible"
-                            variant="standard"
                             value={moment().diff(
                               moment(selectedItem?.dob, "YYYY-MM-DD"),
                               "years"
@@ -482,11 +482,16 @@ const Sample = () => {
                       >
                         Gender
                       </span>
-                      <div>
+                      <div
+                        style={{
+                          marginTop: 12,
+                        }}
+                      >
                         {selectedItem?.id === item.id ? (
                           <select
                             value={selectedItem.gender}
                             onChange={handleGender}
+                            id="genderSelect"
                           >
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -507,13 +512,18 @@ const Sample = () => {
                       </span>
                       <div>
                         {selectedItem?.id == item.id ? (
-                          <input
+                          <TextField
+                            id="outlined-multiline-flexible"
                             value={selectedItem?.country}
                             onChange={(e) => {
                               setSelectedItem({
                                 ...selectedItem,
                                 country: e.target.value,
                               });
+                            }}
+                            style={{
+                              width: "100%",
+                              marginTop: 12,
                             }}
                           />
                         ) : (
@@ -531,13 +541,12 @@ const Sample = () => {
                     >
                       Description
                     </span>
-                    <div style={{ marginTop: 8 }}>
+                    <div>
                       {selectedItem?.id == item?.id ? (
                         <TextField
                           id="outlined-multiline-flexible"
                           multiline
                           maxRows={4}
-                          variant="standard"
                           value={selectedItem?.description}
                           onChange={(e) => {
                             setSelectedItem({
