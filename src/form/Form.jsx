@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Main from "../routes/Main";
 
 const Form = () => {
@@ -16,30 +16,37 @@ const Form = () => {
   });
   const [storeData, setStoreData] = useState([]);
 
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const data = await localStorage.getItem("data");
+    const storagedata = JSON.parse(data);
+    setData(storagedata);
+  };
 
   const handleChange = (e) => {
     let updateName = e.target.name;
     let updateValue = e.target.value;
     if (updateName === "frontend") {
       let role = (data.roles.frontend = e.target.checked);
-      setData({ ...data, role });
+      setData({...data, role});
       return;
     } else if (updateName === "backend") {
       let role = (data.roles.backend = e.target.checked);
-      setData({ ...data, role });
+      setData({...data, role});
       return;
     }
 
-    setData({ ...data, [updateName]: updateValue });
+    setData({...data, [updateName]: updateValue});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(data);
-    setStoreData([...storeData, data]);
-    console.log(storeData);
-    localStorage.setItem("data", JSON.stringify(storeData));
+    console.log(data);
+    // setStoreData([...storeData, data]);
+    localStorage.setItem("data", JSON.stringify(data));
   };
 
   return (
@@ -94,7 +101,7 @@ const Form = () => {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className="d-flex" style={{ gap: "2rem" }}>
+            <div className="d-flex" style={{gap: "2rem"}}>
               Gender:
               <div className="form-check">
                 <input
@@ -123,7 +130,7 @@ const Form = () => {
                 </label>
               </div>
             </div>
-            <div className="d-flex" style={{ gap: "2rem" }}>
+            <div className="d-flex" style={{gap: "2rem"}}>
               Role:
               <div className="form-check">
                 <input

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Main from "../routes/Main";
+import {useLocation} from "react-router-dom";
 
 const getLocalData = () => {
   const lists = localStorage.getItem("todo");
@@ -16,6 +17,10 @@ const Todo = () => {
   const [isEditItem, setIsEditItem] = useState("");
   const [toggleBtn, setToggleBtn] = useState(false);
 
+  const location = useLocation();
+  const {data} = location.state;
+  console.log(data);
+
   const addItem = () => {
     if (!input) {
       console.error("enter data");
@@ -24,7 +29,7 @@ const Todo = () => {
       setItems(
         items.map((elem) => {
           if (elem.id === isEditItem) {
-            return { ...elem, name: input };
+            return {...elem, name: input};
           }
           return elem;
         })

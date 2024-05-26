@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import {useNavigate, NavLink} from "react-router-dom";
 
 const Main = () => {
   const navigate = useNavigate();
-  const navLinkStyles = ({ isActive }) => {
+  const navLinkStyles = ({isActive}) => {
     return {
       color: isActive ? "red" : "black",
       textDecoration: isActive ? "underline" : "none",
@@ -39,7 +39,9 @@ const Main = () => {
 
       <button onClick={() => navigate("/HooksOld")}>Hooks 1</button>
       <button onClick={() => navigate("/Hooks")}>Hooks 2</button>
-      <button onClick={() => navigate("/Todo")}>Todo</button>
+      <button onClick={() => navigate("/Todo", {state: {data: "dsd"}})}>
+        Todo
+      </button>
       <button onClick={() => navigate("/Menu")}>Menu</button>
       <button onClick={() => navigate("/Form")}>Form</button>
     </>

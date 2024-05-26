@@ -34,14 +34,14 @@ const Hooks = () => {
       <button
         type="button"
         className="btn btn-primary m-1"
-        onClick={() => dispatch({ type: "Add" })}
+        onClick={() => dispatch({type: "Add"})}
       >
         Reducer Add
       </button>
       <button
         type="button"
         className="btn btn-primary m-1"
-        onClick={() => dispatch({ type: "Sub" })}
+        onClick={() => dispatch({type: "Sub"})}
       >
         Reducer Sub
       </button>
